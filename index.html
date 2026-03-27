@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sororitu ষড়ঋতু | Interactive Seasons Explorer</title>
+    <link rel="icon" type="image/png" href="asset/season.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Season Backgrounds -->
+    <div class="season-bg summer-bg active" id="summer-bg"></div>
+    <div class="season-bg monsoon-bg" id="monsoon-bg"></div>
+    <div class="season-bg autumn-bg" id="autumn-bg"></div>
+    <div class="season-bg late-autumn-bg" id="late-autumn-bg"></div>
+    <div class="season-bg winter-bg" id="winter-bg"></div>
+    <div class="season-bg spring-bg" id="spring-bg"></div>
+
+    <!-- Top Controls Bar -->
+    <div class="top-controls">
+        <div class="lang-toggle" id="langToggle" title="Toggle Language">
+            <span class="lang-en active-lang">EN</span>
+            <span class="lang-divider">|</span>
+            <span class="lang-bn">বাং</span>
+        </div>
+        <div class="sound-toggle" id="soundToggle" title="Toggle Ambient Sound">
+            <i class="fas fa-volume-mute"></i>
+        </div>
+        <div class="theme-toggle" id="themeToggle" title="Toggle Day/Night">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="auto-cycle-toggle" id="autoCycleToggle" title="Auto-cycle Seasons">
+            <i class="fas fa-play"></i>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-ornament">❋ ❋ ❋</div>
+            <h1 class="main-title">
+                <span class="title-en">Sororitu</span>
+                <span class="title-bn">ষড়ঋতু</span>
+            </h1>
+            <p class="subtitle" data-en="Explore the beauty and soul of Bangladesh's six sacred seasons" data-bn="বাংলাদেশের ছয় ঋতুর সৌন্দর্য ও আত্মা অন্বেষণ করুন">
+                Explore the beauty and soul of Bangladesh's six sacred seasons
+            </p>
+
+            <!-- Season Wheel Navigation -->
+            <div class="season-wheel-wrapper">
+                <div class="season-wheel" id="seasonWheel">
+                    <div class="wheel-center">
+                        <div class="wheel-center-icon"><i class="fas fa-sun"></i></div>
+                        <div class="wheel-center-text">ঋতু</div>
+                    </div>
+                    <div class="wheel-segment" data-season="summer" data-angle="0">
+                        <div class="segment-content">
+                            <i class="fas fa-sun"></i>
+                            <span class="seg-en">Summer</span>
+                            <span class="seg-bn">গ্রীষ্ম</span>
+                        </div>
+                    </div>
+                    <div class="wheel-segment" data-season="monsoon" data-angle="60">
+                        <div class="segment-content">
+                            <i class="fas fa-cloud-rain"></i>
+                            <span class="seg-en">Monsoon</span>
+                            <span class="seg-bn">বর্ষা</span>
+                        </div>
+                    </div>
+                    <div class="wheel-segment" data-season="autumn" data-angle="120">
+                        <div class="segment-content">
+                            <i class="fas fa-leaf"></i>
+                            <span class="seg-en">Autumn</span>
+                            <span class="seg-bn">শরৎ</span>
+                        </div>
+                    </div>
+                    <div class="wheel-segment" data-season="late-autumn" data-angle="180">
+                        <div class="segment-content">
+                            <i class="fas fa-tree"></i>
+                            <span class="seg-en">Hemanta</span>
+                            <span class="seg-bn">হেমন্ত</span>
+                        </div>
+                    </div>
+                    <div class="wheel-segment" data-season="winter" data-angle="240">
+                        <div class="segment-content">
+                            <i class="fas fa-snowflake"></i>
+                            <span class="seg-en">Winter</span>
+                            <span class="seg-bn">শীত</span>
+                        </div>
+                    </div>
+                    <div class="wheel-segment" data-season="spring" data-angle="300">
+                        <div class="segment-content">
+                            <i class="fas fa-seedling"></i>
+                            <span class="seg-en">Spring</span>
+                            <span class="seg-bn">বসন্ত</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flat Season Buttons (fallback/mobile) -->
+            <div class="season-selector">
+                <button class="season-btn" data-season="summer"><i class="fas fa-sun"></i> <span data-en="Summer" data-bn="গ্রীষ্ম">Summer</span></button>
+                <button class="season-btn" data-season="monsoon"><i class="fas fa-cloud-rain"></i> <span data-en="Monsoon" data-bn="বর্ষা">Monsoon</span></button>
+                <button class="season-btn" data-season="autumn"><i class="fas fa-leaf"></i> <span data-en="Autumn" data-bn="শরৎ">Autumn</span></button>
+                <button class="season-btn" data-season="late-autumn"><i class="fas fa-tree"></i> <span data-en="Hemanta" data-bn="হেমন্ত">Hemanta</span></button>
+                <button class="season-btn" data-season="winter"><i class="fas fa-snowflake"></i> <span data-en="Winter" data-bn="শীত">Winter</span></button>
+                <button class="season-btn" data-season="spring"><i class="fas fa-seedling"></i> <span data-en="Spring" data-bn="বসন্ত">Spring</span></button>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="current-season-indicator">
+                    <i class="fas fa-circle-dot pulse-dot"></i>
+                    <span data-en="Now:" data-bn="এখন:">Now:</span>
+                    <span id="current-season-text">Summer (গ্রীষ্ম)</span>
+                </div>
+                <div class="countdown-indicator">
+                    <i class="fas fa-hourglass-half"></i>
+                    <span id="countdown-text">Loading...</span>
+                </div>
+                <div class="weather-indicator" id="weatherIndicator">
+                    <i class="fas fa-location-dot"></i>
+                    <span id="weather-text" data-en="Fetching weather..." data-bn="আবহাওয়া লোড হচ্ছে...">Fetching weather...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Season Display -->
+        <div class="season-display" id="seasonDisplay">
+            <div class="season-header">
+                <div class="season-title">
+                    <i class="season-icon fas fa-sun"></i>
+                    <span>Summer <span class="bangla-name">(গ্রীষ্ম)</span></span>
+                </div>
+                <div class="season-period">
+                    Mid-April – Mid-June<br>
+                    <span class="bangla-period">বৈশাখ – জ্যৈষ্ঠ</span>
+                </div>
+            </div>
+
+            <div class="season-info">
+                <div class="season-details">
+                    <p id="seasonDescription">Summer in Bangladesh is characterized by intense heat and humidity...</p>
+                    <div class="season-characteristics" id="seasonCharacteristics"></div>
+                </div>
+                <div class="season-visuals">
+                    <div class="temperature-display" id="temperatureDisplay">35°C</div>
+                    <div class="visual-element summer-animation" id="visualElement"></div>
+                    <button class="share-btn" id="shareBtn" title="Download Season Card">
+                        <i class="fas fa-share-nodes"></i>
+                        <span data-en="Share Card" data-bn="শেয়ার করুন">Share Card</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="foods"><i class="fas fa-bowl-rice"></i> <span data-en="Foods" data-bn="খাবার">Foods</span></button>
+                    <button class="tab-btn" data-tab="festivals"><i class="fas fa-star-and-crescent"></i> <span data-en="Festivals" data-bn="উৎসব">Festivals</span></button>
+                    <button class="tab-btn" data-tab="nature"><i class="fas fa-pagelines"></i> <span data-en="Nature" data-bn="প্রকৃতি">Nature</span></button>
+                    <button class="tab-btn" data-tab="poetry"><i class="fas fa-feather-pointed"></i> <span data-en="Poetry" data-bn="কবিতা">Poetry</span></button>
+                    <button class="tab-btn" data-tab="compare"><i class="fas fa-code-compare"></i> <span data-en="Compare" data-bn="তুলনা">Compare</span></button>
+                </div>
+
+                <!-- Foods Tab -->
+                <div class="tab-content active" id="tab-foods">
+                    <div class="foods-grid" id="foodsGrid"></div>
+                </div>
+
+                <!-- Festivals Tab -->
+                <div class="tab-content" id="tab-festivals">
+                    <div class="festival-timeline" id="festivalTimeline"></div>
+                </div>
+
+                <!-- Nature Tab -->
+                <div class="tab-content" id="tab-nature">
+                    <div class="nature-grid" id="natureGrid"></div>
+                </div>
+
+                <!-- Poetry Tab -->
+                <div class="tab-content" id="tab-poetry">
+                    <div class="poetry-section" id="poetrySection"></div>
+                </div>
+
+                <!-- Compare Tab -->
+                <div class="tab-content" id="tab-compare">
+                    <div class="compare-section">
+                        <div class="compare-selector">
+                            <label data-en="Compare with:" data-bn="তুলনা করুন:">Compare with:</label>
+                            <select id="compareSelect">
+                                <option value="summer">Summer (গ্রীষ্ম)</option>
+                                <option value="monsoon">Monsoon (বর্ষা)</option>
+                                <option value="autumn">Autumn (শরৎ)</option>
+                                <option value="late-autumn">Hemanta (হেমন্ত)</option>
+                                <option value="winter">Winter (শীত)</option>
+                                <option value="spring">Spring (বসন্ত)</option>
+                            </select>
+                        </div>
+                        <div class="compare-grid" id="compareGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quizSection">
+            <div class="quiz-header">
+                <h2><i class="fas fa-question-circle"></i> <span data-en="Season Quiz" data-bn="ঋতু কুইজ">Season Quiz</span></h2>
+                <p data-en="Guess the season from the clues!" data-bn="ইঙ্গিত দেখে ঋতু অনুমান করুন!">Guess the season from the clues!</p>
+            </div>
+            <div class="quiz-body" id="quizBody">
+                <div class="quiz-clues" id="quizClues"></div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div class="quiz-result" id="quizResult"></div>
+                <button class="quiz-next-btn" id="quizNextBtn" style="display:none">
+                    <i class="fas fa-arrow-right"></i>
+                    <span data-en="Next Question" data-bn="পরের প্রশ্ন">Next Question</span>
+                </button>
+            </div>
+            <div class="quiz-score">
+                <span data-en="Score:" data-bn="স্কোর:">Score:</span>
+                <span id="quizScore">0</span> / <span id="quizTotal">0</span>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-ornament">❋</div>
+            <p>Sororitu &copy; 2025 | <span data-en="Celebrating the beauty of Bangladesh's six seasons" data-bn="বাংলাদেশের ছয় ঋতুর সৌন্দর্য উদযাপন">Celebrating the beauty of Bangladesh's six seasons</span></p>
+            <div class="keyboard-hint"><i class="fas fa-keyboard"></i> <span data-en="Use ← → arrow keys to navigate seasons" data-bn="ঋতু নেভিগেট করতে ← → তীর কী ব্যবহার করুন">Use ← → arrow keys to navigate seasons</span></div>
+        </footer>
+    </div>
+
+    <!-- Hidden Canvas for Share Card -->
+    <canvas id="shareCanvas" style="display:none" width="800" height="450"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
