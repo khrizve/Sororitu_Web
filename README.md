@@ -4,6 +4,10 @@ An interactive, bilingual web experience celebrating the six sacred seasons of B
 
 ---
 
+![image](sororitu-banner.jpg)
+
+---
+
 ## ✨ Features
 
 - **Six Seasons** — Detailed profiles for each of Bangladesh's six seasons: Summer, Monsoon, Autumn, Hemanta, Winter, and Spring
