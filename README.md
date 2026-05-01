@@ -4,7 +4,7 @@ An interactive, bilingual web experience celebrating the six sacred seasons of B
 
 ---
 
-![image](sororitu-banner.jpg)
+Live URL: https://sororitu.netlify.app/
 
 ---
 
